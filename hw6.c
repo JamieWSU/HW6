@@ -58,9 +58,11 @@ int main()
     printf("\n\nAfter sorting\n");
 	for(i = 0; i < 5; i++)
 		printf("array[%d] = {%s, %d}\n", i, array[i].data, array[i].key);
+//this dose a double free because the data array is on the stack not the heap
 //	for(i = 0; i < 5; i++)
 //        	free(array[i].data);
-
+	//the only memory reming to be freed is the item array
+	free(array);
     return 0;
 
 }
